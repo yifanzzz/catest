@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	                    http://www.springframework.org/schema/beans/spring-beans.xsd
+	                    http://code.alibabatech.com/schema/dubbo 
+	                    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application id="catest-provider" 
+                       name="catest-provider" 
+                       owner="${dubbo.owner}" 
+	                   organization="${dubbo.organization}"/>
+
+    <!-- 注册中心配置 -->
+	<dubbo:registry protocol="${dubbo.registry.protocol}" 
+	                address="${dubbo.registry.address}" 
+	                timeout="${dubbo.registry.timeout}"
+	                group="${dubbo.registry.group}"/>
+	
+	<!-- provider 单机模式启动不同端口端口 ，否则会报端口占用！ -->
+	<dubbo:protocol name="dubbo" port="-1"/>
+	                
+    <dubbo:provider timeout="${dubbo.provider.timeout}"/>
+
+    <!--有服务的启动时检查：(没有提供者时报错),启用结果缓存 -->
+	<dubbo:consumer  check="${dubbo.consumer.check}"/>
+	
+	<!-- 注解annotation-based and xml-based configs -->
+    <dubbo:annotation package="${dubbo.annotation.packages}" />
+    
+</beans>

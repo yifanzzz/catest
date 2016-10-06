@@ -1,0 +1,21 @@
+# Properties file with JDBC-related settings.
+db: 
+  driverClassName: "com.mysql.jdbc.Driver"
+  url: "jdbc:mysql://ingeekdb.t0.daoapp.io:61461/ingeek"
+  username: root
+  password: B1AE0D64BB98086E845FB161FA60D230
+  filters: "stat,log4j"
+  maxActive: 20
+  initialSize: 1
+  maxWait: 60000
+  minIdle: 10
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  validationQuery: SELECT 1
+  testWhileIdle: true
+  testOnBorrow: false
+  testOnReturn: false
+  maxOpenPreparedStatements: 20
+  removeAbandoned: false
+  removeAbandonedTimeout: 1800
+  logAbandoned: true
